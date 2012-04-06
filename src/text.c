@@ -60,7 +60,7 @@ text_disp_header(struct list *lst)
 
 	/* use blue when color option is triggered */
 	if (cflag)
-		(void)printf("\033[;34m");
+		(void)printf("\033[01;34m");
 
 	(void)printf("FILESYSTEM ");
 	for (i = 11; i < lst->fsmaxlen; i++)
@@ -196,17 +196,17 @@ text_disp_bar(double perct)
 	} else { /* color */
 
 		/* green */
-		(void)printf("\033[;32m");
+		(void)printf("\033[01;32m");
 		for (i = 0; (i < 50) && (i < perct); i += barinc)
 			(void)printf("=");
 
 		/* yellow */
-		(void)printf("\033[;33m");
+		(void)printf("\033[01;33m");
 		for (; (i < 75) && (i < perct); i += barinc)
 			(void)printf("=");
 
 		/* red */
-		(void)printf("\033[;31m");
+		(void)printf("\033[01;31m");
 		for (; (i < 100) && (i < perct); i += barinc)
 			(void)printf("=");
 
@@ -323,11 +323,11 @@ text_disp_perct(double perct)
 		(void)printf("%3.f%%", perct);
 	} else {
 		if (perct < 50.0) /* green */
-			(void)printf("\033[;32m");
+			(void)printf("\033[01;32m");
 		else if (perct < 75.0) /* yellow */
-			(void)printf("\033[;33m");
+			(void)printf("\033[01;33m");
 		else /* red */
-			(void)printf("\033[;31m");
+			(void)printf("\033[01;31m");
 
 		(void)printf("%3.f", perct);
 		text_reset_color();
@@ -344,11 +344,11 @@ text_change_color(double perct)
 {
 	if (cflag) {
 		if (perct < 50.0) /* green */
-			(void)printf("\033[;32m");
+			(void)printf("\033[01;32m");
 		else if (perct < 75.0) /* yellow */
-			(void)printf("\033[;33m");
+			(void)printf("\033[01;33m");
 		else /* red */
-			(void)printf("\033[;31m");
+			(void)printf("\033[01;31m");
 	}
 }
 
